@@ -7,20 +7,37 @@ package fecha;
  */
 public class Fecha {
 
+<<<<<<< HEAD
 	/**
 	 * d: dia de una fecha
 	 */
 	private int d;
+=======
+	public static final int DIEZ = 10;
+
+	/**
+	 * d: dia de una fecha
+	 */
+	private int fechaDia;
+>>>>>>> PMD-Refactor
 
 	/**
 	 * m: mes de una fecha
 	 */
+<<<<<<< HEAD
 	private int m;
+=======
+	private int fechaMes;
+>>>>>>> PMD-Refactor
 
 	/**
 	 * a: anio de una fecha
 	 */
+<<<<<<< HEAD
 	private int a;
+=======
+	private int fechaAnio;
+>>>>>>> PMD-Refactor
 
 	/**
 	 * Constructor sin parametros
@@ -37,9 +54,9 @@ public class Fecha {
 	 * @param anio = variable a
 	 */
 	public Fecha(int dia, int mes, int anio) {
-		this.d = dia;
-		this.m = mes;
-		this.a = anio;
+		this.fechaDia = dia;
+		this.fechaMes = mes;
+		this.fechaAnio = anio;
 	}
 
 	/**
@@ -48,25 +65,28 @@ public class Fecha {
 	 * @return: fecha correcta a base de diaCorrecto, mesCorrecto y anioCorrecto
 	 */
 	public boolean fechaCorrecta() {
-		boolean diaCorrecto, mesCorrecto, anioCorrecto;
-		anioCorrecto = a > 0;
-		mesCorrecto = m >= 1 && m <= 12;
-		switch (m) {
+		boolean diaCorrecto;
+		boolean mesCorrecto;
+		boolean anioCorrecto;
+		anioCorrecto = fechaAnio > 0;
+		mesCorrecto = fechaMes >= 1 && fechaMes <= 12;
+		boolean diaMayor1 = fechaDia >= 1;
+		switch (fechaMes) {
 		case 2:
 			if (esBisiesto()) {
-				diaCorrecto = d >= 1 && d <= 29;
+				diaCorrecto = diaMayor1 && fechaDia <= 29;
 			} else {
-				diaCorrecto = d >= 1 && d <= 28;
+				diaCorrecto = diaMayor1 && fechaDia <= 28;
 			}
 			break;
 		case 4:
 		case 6:
 		case 9:
 		case 11:
-			diaCorrecto = d >= 1 && d <= 30;
+			diaCorrecto = diaMayor1 && fechaDia <= 30;
 			break;
 		default:
-			diaCorrecto = d >= 1 && d <= 31;
+			diaCorrecto = diaMayor1 && fechaDia <= 31;
 		}
 		return diaCorrecto && mesCorrecto && anioCorrecto;
 	}
@@ -77,21 +97,25 @@ public class Fecha {
 	 * @return true/false en cuanto a si un anio es bisiesto o no
 	 */
 	private boolean esBisiesto() {
-		boolean esBisiesto = (a % 4 == 0 && a % 100 != 0 || a % 400 == 0);
-		return esBisiesto;
+		return fechaAnio % 4 == 0 && fechaAnio % 100 != 0 || fechaAnio % 400 == 0;
 	}
 
 	/**
 	 * Metodo diaSiguiente: pasa la fecha al dia siguiente
 	 */
+<<<<<<< HEAD
 	public void diaSiguiente() {
 		d++;
+=======
+	public void nextDay() {
+		fechaDia++;
+>>>>>>> PMD-Refactor
 		if (!fechaCorrecta()) {
-			d = 1;
-			m++;
+			fechaDia = 1;
+			fechaMes++;
 			if (!fechaCorrecta()) {
-				m = 1;
-				a++;
+				fechaMes = 1;
+				fechaAnio++;
 			}
 		}
 	}
@@ -100,15 +124,17 @@ public class Fecha {
 	 * Metodo toString: pasa la fecha a String
 	 */
 	public String toString() {
-		if (d < 10 && m < 10) {
-			return "0" + d + "-0" + m + "-" + a;
-		} else if (d < 10 && m >= 10) {
-			return "0" + d + "-" + m + "-" + a;
-		} else if (d >= 10 && m < 10) {
-			return d + "-0" + m + "-" + a;
+		String respuesta;
+		if (fechaDia < DIEZ && fechaMes < DIEZ) {
+			respuesta = "0" + fechaDia + "-0" + fechaMes + "-" + fechaAnio;
+		} else if (fechaDia < DIEZ && fechaMes >= DIEZ) {
+			respuesta =  "0" + fechaDia + "-" + fechaMes + "-" + fechaAnio;
+		} else if (fechaDia >= DIEZ && fechaMes < DIEZ) {
+			respuesta = fechaDia + "-0" + fechaMes + "-" + fechaAnio;
 		} else {
-			return d + "-" + m + "-" + a;
+			respuesta = fechaDia + "-" + fechaMes + "-" + fechaAnio;
 		}
+		return respuesta;
 	}
 
 }
