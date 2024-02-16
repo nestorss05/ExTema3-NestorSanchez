@@ -7,37 +7,23 @@ package fecha;
  */
 public class Fecha {
 
-<<<<<<< HEAD
-	/**
-	 * d: dia de una fecha
-	 */
-	private int d;
-=======
 	public static final int DIEZ = 10;
 
 	/**
-	 * d: dia de una fecha
+	 * fechaDia: dia de una fecha
 	 */
 	private int fechaDia;
->>>>>>> PMD-Refactor
 
 	/**
-	 * m: mes de una fecha
+	 * fechaMes: mes de una fecha
 	 */
-<<<<<<< HEAD
-	private int m;
-=======
+
 	private int fechaMes;
->>>>>>> PMD-Refactor
 
 	/**
-	 * a: anio de una fecha
+	 * fechaAnio: anio de una fecha
 	 */
-<<<<<<< HEAD
-	private int a;
-=======
 	private int fechaAnio;
->>>>>>> PMD-Refactor
 
 	/**
 	 * Constructor sin parametros
@@ -101,23 +87,10 @@ public class Fecha {
 	}
 
 	/**
-	 * Metodo diaSiguiente: pasa la fecha al dia siguiente
+	 * Metodo nextDay: pasa la fecha al dia siguiente
 	 */
-<<<<<<< HEAD
-	public void diaSiguiente() {
-		d++;
-=======
 	public void nextDay() {
 		fechaDia++;
->>>>>>> PMD-Refactor
-		if (!fechaCorrecta()) {
-			fechaDia = 1;
-			fechaMes++;
-			if (!fechaCorrecta()) {
-				fechaMes = 1;
-				fechaAnio++;
-			}
-		}
 	}
 
 	/**
