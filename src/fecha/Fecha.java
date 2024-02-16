@@ -1,24 +1,52 @@
 package fecha;
 
+/**
+ * Clase fecha: Examen Entornos T3 2023/24
+ * 
+ * @author Nestor Sanchez
+ */
 public class Fecha {
-	private int d; //día
-	private int m; //mes
-	private int a; //año
 
-	
+	/**
+	 * d: dia de una fecha
+	 */
+	private int d;
+
+	/**
+	 * m: mes de una fecha
+	 */
+	private int m;
+
+	/**
+	 * a: anio de una fecha
+	 */
+	private int a;
+
+	/**
+	 * Constructor sin parametros
+	 */
 	public Fecha() {
 
 	}
 
-	
+	/**
+	 * Constructor con parametros
+	 * 
+	 * @param dia  = variable d
+	 * @param mes  = variable m
+	 * @param anio = variable a
+	 */
 	public Fecha(int dia, int mes, int anio) {
 		this.d = dia;
 		this.m = mes;
 		this.a = anio;
 	}
 
-	
-	
+	/**
+	 * boolean fechaCorrecta(): comprueba si la fecha es correcta
+	 * 
+	 * @return: fecha correcta a base de diaCorrecto, mesCorrecto y anioCorrecto
+	 */
 	public boolean fechaCorrecta() {
 		boolean diaCorrecto, mesCorrecto, anioCorrecto;
 		anioCorrecto = a > 0;
@@ -43,13 +71,19 @@ public class Fecha {
 		return diaCorrecto && mesCorrecto && anioCorrecto;
 	}
 
-	// Método esBisiesto. Solo lo usa fechaCorrecta, por eso es privado
+	/**
+	 * Metodo esBisiesto. Solo lo usa fechaCorrecta, por eso es privado
+	 * 
+	 * @return true/false en cuanto a si un anio es bisiesto o no
+	 */
 	private boolean esBisiesto() {
 		boolean esBisiesto = (a % 4 == 0 && a % 100 != 0 || a % 400 == 0);
 		return esBisiesto;
 	}
 
-	// Método diaSiguiente
+	/**
+	 * Metodo diaSiguiente: pasa la fecha al dia siguiente
+	 */
 	public void diaSiguiente() {
 		d++;
 		if (!fechaCorrecta()) {
@@ -62,7 +96,9 @@ public class Fecha {
 		}
 	}
 
-	// Método toString
+	/**
+	 * Metodo toString: pasa la fecha a String
+	 */
 	public String toString() {
 		if (d < 10 && m < 10) {
 			return "0" + d + "-0" + m + "-" + a;
